@@ -19,20 +19,20 @@ iOS15 当中的 Live Text 功能目前只在 相册, 相机 APP 当中提供, �
 ##### **Demo 相关效果**
 
 原始图片
-![img](https://wdcdn.qpic.cn/MTY4ODg1MDQ0NDg5MjIwOA_862217_ItdxjLssO5K72jm3_1632792960?sign=1634268049-638664351-0-852b634966ebc152a8a60210bbf3610a)            
+![image.png](https://i.loli.net/2021/10/15/BDYET3js2cWf81J.png)
 
 
 
 ##### **Vision 识别效果** 
 
 一.  识别到 character 级别
-![img](https://wdcdn.qpic.cn/MTY4ODg1MDQ0NDg5MjIwOA_558036_mGlxhqY_5eqmqhg5_1632793249?sign=1634268049-2147466728-0-bcffbee254a690c11e6684413e804aee)            
+![image.png](https://i.loli.net/2021/10/15/wNzpqlgJUZsrE5B.png)
 
 二. 识别到 words 级别
-![img](https://wdcdn.qpic.cn/MTY4ODg1MDQ0NDg5MjIwOA_499323_H36RIooqWXaDVFG0_1632793289?sign=1634268049-1711453175-0-0b85993b277a3cd05277d9f627342707)            
+![image.png](https://i.loli.net/2021/10/15/4QGcYwLUEPeWnkb.png)
 
 三. iOS13 之后 Vision 支持 VNRecognizeTextRequest 文字识别
-![img](https://wdcdn.qpic.cn/MTY4ODg1MDQ0NDg5MjIwOA_9823_M5XC0aII3YohRhhu_1632797302?sign=1634268049-1672184764-0-75912db4f58e53b6c4946c692e52f4e0)            
+![image.png](https://i.loli.net/2021/10/15/Ne1zCWEoAu4ctlS.png)
 
 识别结果
 
