@@ -19,9 +19,8 @@ iOS15 当中的 Live Text 功能目前只在 相册, 相机 APP 当中提供, �
 ##### **Demo 相关效果**
 
 原始图片
+
 ![image.png](https://i.loli.net/2021/10/15/BDYET3js2cWf81J.png)
-
-
 
 ##### **Vision 识别效果** 
 
