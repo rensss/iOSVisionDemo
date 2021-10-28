@@ -9,6 +9,8 @@ import UIKit
 import PhotosUI
 import AVFoundation
 import Vision
+import TZImagePickerController
+import PureLayout
 
 class ViewController: UIViewController {
     
@@ -31,6 +33,10 @@ class ViewController: UIViewController {
         c.addTarget(self, action: #selector(startVision), for: .touchUpInside)
         
         view.addSubview(imageView)
+        imageView.autoPinEdge(.top, to: .bottom, of: b, withOffset: 20)
+        imageView.autoPinEdge(toSuperviewEdge: .left, withInset: 20)
+        imageView.autoPinEdge(toSuperviewEdge: .right, withInset: 20)
+        imageView.autoPinEdge(toSuperviewEdge: .bottom, withInset: 20)
     }
     
     // MARK:- func
@@ -97,20 +103,26 @@ class ViewController: UIViewController {
             
             if let textObservation = observation as? VNRecognizedTextObservation {
                 let box = textObservation.boundingBox
-                let rect = self.getRect(coverRect: box, imageSize: image.size)
-                tempArray.append(NSValue(cgRect: rect))
+                let imageRect = self.frame(for: self.imageView.image!, inImageViewAspectFit: self.imageView)
+                let imageSize = imageRect.size
+                var borderRect = self.getRect(coverRect: box, imageSize: imageSize)
+                borderRect.origin.x += imageRect.origin.x
+                borderRect.origin.y += imageRect.origin.y
+                tempArray.append(NSValue(cgRect: borderRect))
             }
             
             // character 文字检测
             if let textObservation = observation as? VNTextObservation {
                 if needCharacter {
                     for box in textObservation.characterBoxes ?? [] {
-                        let rect = self.getRect(coverRect: box.boundingBox, imageSize: image.size)
+                        let imageSize = self.frame(for: self.imageView.image!, inImageViewAspectFit: self.imageView).size
+                        let rect = self.getRect(coverRect: box.boundingBox, imageSize: imageSize)
                         tempArray.append(NSValue(cgRect: rect))
                     }
                 } else {
                     let box = textObservation.boundingBox
-                    let rect = self.getRect(coverRect: box, imageSize: image.size)
+                    let imageSize = self.frame(for: self.imageView.image!, inImageViewAspectFit: self.imageView).size
+                    let rect = self.getRect(coverRect: box, imageSize: imageSize)
                     tempArray.append(NSValue(cgRect: rect))
                 }
             }
@@ -140,10 +152,51 @@ class ViewController: UIViewController {
         }
     }
     
+    func findOriginalImageData(_ asset: PHAsset) {
+        let requestOption = PHImageRequestOptions()
+        requestOption.isSynchronous = true
+        requestOption.deliveryMode = .opportunistic
+        
+        PHImageManager.default().requestImageDataAndOrientation(for: asset, options: requestOption) { imageData, uti, orientation, dictionary in
+            
+            if let imageData = imageData {
+                self.cleanImage()
+                self.imageView.image = UIImage(data: imageData)
+            }
+            print("uti \n \(uti as Any)")
+            print("orientation \n \(orientation.rawValue)")
+        }
+    }
+    
+    func frame(for image: UIImage, inImageViewAspectFit imageView: UIImageView) -> CGRect {
+      let imageRatio = (image.size.width / image.size.height)
+      let viewRatio = imageView.frame.size.width / imageView.frame.size.height
+      if imageRatio < viewRatio {
+        let scale = imageView.frame.size.height / image.size.height
+        let width = scale * image.size.width
+        let topLeftX = (imageView.frame.size.width - width) * 0.5
+        return CGRect(x: topLeftX, y: 0, width: width, height: imageView.frame.size.height)
+      } else {
+        let scale = imageView.frame.size.width / image.size.width
+        let height = scale * image.size.height
+        let topLeftY = (imageView.frame.size.height - height) * 0.5
+        return CGRect(x: 0.0, y: topLeftY, width: imageView.frame.size.width, height: height)
+      }
+    }
+    
     // MARK:- event
     @objc func btnClick() {
-        pickerVc.delegate = self
-        self.present(pickerVc, animated: true, completion: nil)
+//        pickerVc.delegate = self
+//        self.present(pickerVc, animated: true, completion: nil)
+        
+        if let imagePickerVc = TZImagePickerController(maxImagesCount: 1, delegate: self) {
+            imagePickerVc.didFinishPickingPhotosHandle = { [weak self] photos, assets, isOriginal in
+                if let asset = assets?.first as? PHAsset {
+                    self?.findOriginalImageData(asset)
+                }
+            }
+            self.present(imagePickerVc, animated: true, completion: nil)
+        }
     }
     
     @objc func startVision() {
@@ -153,18 +206,34 @@ class ViewController: UIViewController {
     // MARK:- lazy
     lazy var pickerVc: UIImagePickerController = {
         let p = UIImagePickerController()
-        p.allowsEditing = true
+        p.allowsEditing = false
         return p
     }()
     
     lazy var imageView: UIImageView = {
         let i = UIImageView()
+        i.contentMode = .scaleAspectFit
         return i
     }()
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage {
+            picker.delegate = nil
+            picker.dismiss(animated: true, completion: nil)
+            
+            self.cleanImage()
+            
+            selectImage = image
+            imageView.image = image
+            imageView.sizeToFit()
+            let point = CGPoint(x: 0, y: 180)
+            let size = image.size
+            imageView.frame = CGRect(x: point.x, y: point.y, width: size.width, height: size.height)
+        }
+        
         if let image = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.editedImage.rawValue)] as? UIImage {
             picker.delegate = nil
             picker.dismiss(animated: true, completion: nil)
@@ -184,4 +253,8 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         picker.delegate = nil
         picker.dismiss(animated: true, completion: nil)
     }
+}
+
+extension ViewController: TZImagePickerControllerDelegate {
+    
 }

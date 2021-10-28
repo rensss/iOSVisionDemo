@@ -13,9 +13,11 @@
 		1AE1E1C52701A552006B8A52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AE1E1C32701A552006B8A52 /* Main.storyboard */; };
 		1AE1E1C72701A554006B8A52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AE1E1C62701A554006B8A52 /* Assets.xcassets */; };
 		1AE1E1CA2701A554006B8A52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AE1E1C82701A554006B8A52 /* LaunchScreen.storyboard */; };
+		870DEF1A05B2491D13A4A9D4 /* Pods_VisionDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C9F4FFAA0F43EC831A1BDC /* Pods_VisionDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1AE0BE2B272A902A00FB2F53 /* VisionDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VisionDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		1AE1E1BA2701A552006B8A52 /* VisionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AE1E1BD2701A552006B8A52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AE1E1BF2701A552006B8A52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +26,9 @@
 		1AE1E1C62701A554006B8A52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1AE1E1C92701A554006B8A52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1AE1E1CB2701A554006B8A52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89C9F4FFAA0F43EC831A1BDC /* Pods_VisionDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9008CEAE128EB78BA2F7462D /* Pods-VisionDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionDemo.release.xcconfig"; path = "Target Support Files/Pods-VisionDemo/Pods-VisionDemo.release.xcconfig"; sourceTree = "<group>"; };
+		B42316F8B52010B54EA1D398 /* Pods-VisionDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionDemo.debug.xcconfig"; path = "Target Support Files/Pods-VisionDemo/Pods-VisionDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +36,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				870DEF1A05B2491D13A4A9D4 /* Pods_VisionDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C38D7F9135A958E2FD10C4F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B42316F8B52010B54EA1D398 /* Pods-VisionDemo.debug.xcconfig */,
+				9008CEAE128EB78BA2F7462D /* Pods-VisionDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		10F6B5EEBC33CE7C56AB5BA3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89C9F4FFAA0F43EC831A1BDC /* Pods_VisionDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1AE1E1B12701A552006B8A52 = {
 			isa = PBXGroup;
 			children = (
 				1AE1E1BC2701A552006B8A52 /* VisionDemo */,
 				1AE1E1BB2701A552006B8A52 /* Products */,
+				0C38D7F9135A958E2FD10C4F /* Pods */,
+				10F6B5EEBC33CE7C56AB5BA3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +88,7 @@
 				1AE1E1C62701A554006B8A52 /* Assets.xcassets */,
 				1AE1E1C82701A554006B8A52 /* LaunchScreen.storyboard */,
 				1AE1E1CB2701A554006B8A52 /* Info.plist */,
+				1AE0BE2B272A902A00FB2F53 /* VisionDemo-Bridging-Header.h */,
 			);
 			path = VisionDemo;
 			sourceTree = "<group>";
@@ -74,9 +100,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AE1E1CE2701A554006B8A52 /* Build configuration list for PBXNativeTarget "VisionDemo" */;
 			buildPhases = (
+				026886B838492FFD8D9F893F /* [CP] Check Pods Manifest.lock */,
 				1AE1E1B62701A552006B8A52 /* Sources */,
 				1AE1E1B72701A552006B8A52 /* Frameworks */,
 				1AE1E1B82701A552006B8A52 /* Resources */,
+				8996318E3510BB925EE3205B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -99,6 +127,7 @@
 				TargetAttributes = {
 					1AE1E1B92701A552006B8A52 = {
 						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -132,6 +161,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		026886B838492FFD8D9F893F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VisionDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8996318E3510BB925EE3205B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VisionDemo/Pods-VisionDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VisionDemo/Pods-VisionDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VisionDemo/Pods-VisionDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1AE1E1B62701A552006B8A52 /* Sources */ = {
@@ -284,9 +355,11 @@
 		};
 		1AE1E1CF2701A554006B8A52 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B42316F8B52010B54EA1D398 /* Pods-VisionDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KY9HF8C4PA;
@@ -305,6 +378,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = M.VisionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "VisionDemo/VisionDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -312,9 +387,11 @@
 		};
 		1AE1E1D02701A554006B8A52 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9008CEAE128EB78BA2F7462D /* Pods-VisionDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KY9HF8C4PA;
@@ -333,6 +410,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = M.VisionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "VisionDemo/VisionDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
